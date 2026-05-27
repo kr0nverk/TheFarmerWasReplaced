@@ -1,0 +1,6 @@
+#      North
+#        !   
+# West <---> East
+#        ! 
+#      South
+		
