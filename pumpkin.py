@@ -1,11 +1,5 @@
-def reset_pos():
-	while get_pos_x() > 0:
-		move(West)
-	while get_pos_y() > 0:
-		move(South)			
-
 def plant_pumpkin():
-	if can_harvest() and get_entity_type() != Entities.Pumpkin:
+	if get_entity_type() != Entities.Pumpkin:
 		harvest()
 	
 	if get_ground_type() != Grounds.Soil:
@@ -108,9 +102,7 @@ def first_plant():
 
 def farm(size, min_pumpkin):
 	#change_hat(Hats.Pumpkin_Hat)
-	
-	#reset_pos()
-	
+
 	while num_items(Items.Pumpkin) < min_pumpkin: 
 		first_plant()
 		

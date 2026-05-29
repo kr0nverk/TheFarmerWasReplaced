@@ -1,48 +1,19 @@
-def doing_something():
+def plant_hay():
 	if can_harvest():
 		harvest()	
 
-	if get_entity_type() != Entities.Grass:
-		if get_ground_type() != Grounds.Grassland:
-			till()	
+	if get_ground_type() != Grounds.Grassland:
+		till()	
 			
 def farm(size, min_hay):
 	change_hat(Hats.Green_Hat)
 
-	x = get_pos_x()
-	y = get_pos_y()
-	
-	doing_something()
-
 	while num_items(Items.Hay) < min_hay: 
 		
-		for row in range(size - y):
-			if (row + y) % 2 == 0:
-				dir = East
-			else:
-				dir = West
-				
-			for col in range(size-1):
-				move(dir)
-				doing_something()
-		
-			if (row + y) != size-1:
-				move(North)
-				doing_something()
-		
-		move(South)
-		doing_something()
-						
-		for row in range(size-2-y):
-			if (size-1 + row + y) % 2 == 0:
-				dir = West
-			else:
-				dir = East
-					
-			for col in range(size-1):
-				move(dir)
-				doing_something()
+		for i in range(size):
+			for j in range(size):
+			
+				plant_hay()
 
-			if (row - y) != size-2:
-				move(South)	
-				doing_something()	
+				move(North)
+			move(East)	
