@@ -6,6 +6,10 @@ def plant_pumpkin():
 		till()
 		
 	plant(Entities.Pumpkin)
+	if num_items(Items.Fertilizer) > 1:
+		use_item(Items.Fertilizer)
+	
+	
 
 def check_pumpkin(dead_pumpkin_list):	
 	if get_entity_type() == Entities.Dead_Pumpkin:
@@ -14,6 +18,8 @@ def check_pumpkin(dead_pumpkin_list):
 	
 
 def replant_dead_pumpkin(dead_pumpkins):
+	max_measure = get_world_size() * get_world_size() * get_world_size()
+
 	dead_pumpkin_set = set(dead_pumpkins)
 
 	while dead_pumpkin_set:
@@ -27,9 +33,11 @@ def replant_dead_pumpkin(dead_pumpkins):
 				use_item(Items.Water)
 				plant(Entities.Pumpkin)
 			elif can_harvest():
-				dead_pumpkin_set.remove(pumpkin)	 
+				dead_pumpkin_set.remove(pumpkin)
 			else:
 				use_item(Items.Water)
+				if num_items(Items.Fertilizer) > 1:
+					use_item(Items.Fertilizer)
 				
 	harvest()
 		
