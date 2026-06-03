@@ -5,20 +5,23 @@ import pumpkin
 import power
 import cactus
 
-min_hay = 10000
-min_wood = 10000
-min_carrot = 10000
-min_pumpkin = 10000
-min_cactus = 10000
+min_hay = 100000
+min_wood = 100000
+min_carrot = 100000
+min_pumpkin = 100000
+min_cactus = 100000
 
 min_power = 10000
 
 size = get_world_size()
+max_drones = min(max_drones(), size)
 
 while get_pos_x() > 0:
 	move(West)
 while get_pos_y() > 0:
 	move(South)
+
+clear()
 
 while True:
 
@@ -29,7 +32,8 @@ while True:
 		if num_items(Items.Wood) > get_cost(Unlocks.Grass)[Items.Wood]:
 			unlock(Unlocks.Grass)		
 		
-		hay.farm(size, min_wood)
+		#hay.farm(size, min_wood)
+		hay.farm_multiple(size, max_drones, min_hay)
 		
 	elif num_items(Items.Wood) < min_wood:
 		if num_items(Items.Hay) > get_cost(Unlocks.Trees)[Items.Hay]:
@@ -56,8 +60,8 @@ while True:
 		cactus.farm(size, min_cactus)	
 
 	else:
-		min_hay += 10000
-		min_wood += 10000
-		min_carrot += 10000
-		min_pumpkin += 10000
-		min_cactus += 10000					
+		min_hay += 100000
+		min_wood += 100000
+		min_carrot += 100000
+		min_pumpkin += 100000
+		min_cactus += 100000					
